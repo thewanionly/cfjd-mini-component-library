@@ -59,6 +59,7 @@ const S = {
 const ProgressBar = ({ value, size = 'medium' }) => {
   return (
     <S.ProgressBar role='progressbar' aria-valuenow={value} $size={size}>
+      <VisuallyHidden>{value}%</VisuallyHidden>
       <S.ProgressValueWrapper>
         <S.ProgressValue $value={value} $size={size} />
       </S.ProgressValueWrapper>
