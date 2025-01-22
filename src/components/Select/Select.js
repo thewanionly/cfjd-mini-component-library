@@ -19,6 +19,10 @@ const S = {
 
     /* hide native chevron icon */
     appearance: none;
+
+    &:hover {
+      color: ${COLORS.black};
+    }
   `
 };
 
