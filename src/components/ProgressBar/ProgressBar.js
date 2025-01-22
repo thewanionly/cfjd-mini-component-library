@@ -43,14 +43,13 @@ const S = {
 
     ${({ $size }) => SIZES[$size].bar};
   `,
+  ProgressValueWrapper: styled.div`
+    border-radius: 4px;
+    overflow: hidden;
+  `,
   ProgressValue: styled.div`
     background-color: ${COLORS.primary};
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border-top-right-radius: ${({ $value }) => $value >= MAX_VALUE && '4px'};
-    border-bottom-right-radius: ${({ $value }) => $value >= MAX_VALUE && '4px'};
     width: ${({ $value }) => `${Math.min(Math.max($value, MIN_VALUE), MAX_VALUE)}%`};
-
     ${({ $size }) => SIZES[$size].value};
   `
 };
@@ -58,7 +57,9 @@ const S = {
 const ProgressBar = ({ value, size = 'medium' }) => {
   return (
     <S.ProgressBar role='progressbar' aria-valuenow={value} $size={size}>
-      <S.ProgressValue $value={value} $size={size} />
+      <S.ProgressValueWrapper>
+        <S.ProgressValue $value={value} $size={size} />
+      </S.ProgressValueWrapper>
     </S.ProgressBar>
   );
 };
