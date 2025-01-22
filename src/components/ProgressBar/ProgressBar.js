@@ -45,6 +45,8 @@ const S = {
   `,
   ProgressValueWrapper: styled.div`
     border-radius: 4px;
+
+    /* Trim off corners when progress bar is near-full. */
     overflow: hidden;
   `,
   ProgressValue: styled.div`
