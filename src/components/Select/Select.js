@@ -16,6 +16,9 @@ const S = {
     color: ${COLORS.gray700};
     font-size: 1rem;
     font-weight: 400;
+
+    /* hide native chevron icon */
+    appearance: none;
   `
 };
 
