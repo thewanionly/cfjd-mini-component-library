@@ -20,9 +20,14 @@ const S = {
     color: ${COLORS.gray700};
     font-size: 1rem;
     font-weight: 400;
+    line-height: normal;
 
     &:hover {
       color: ${COLORS.black};
+    }
+
+    &:focus-within {
+      outline: 1px solid;
     }
   `,
   Select: styled.select`
@@ -31,15 +36,20 @@ const S = {
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
   `,
   Value: styled.span`
     cursor: pointer;
 
-    display: inline-block;
-    margin-inline-end: 24px;
+    margin-inline-end: 36px;
   `,
   Icon: styled(Icon)`
-    display: inline-block;
+    cursor: pointer;
+
+    position: absolute;
+    top: 9px;
+    right: 10px;
   `
 };
 
