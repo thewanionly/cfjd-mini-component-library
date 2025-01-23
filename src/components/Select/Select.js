@@ -6,7 +6,11 @@ import Icon from '../Icon';
 import { getDisplayedValue } from './Select.helpers';
 
 const S = {
-  Select: styled.select`
+  Wrapper: styled.div`
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+
     background-color: ${COLORS.transparentGray15};
     border: none;
     border-radius: 8px;
@@ -17,12 +21,25 @@ const S = {
     font-size: 1rem;
     font-weight: 400;
 
-    /* hide native chevron icon */
-    appearance: none;
-
     &:hover {
       color: ${COLORS.black};
     }
+  `,
+  Select: styled.select`
+    opacity: 0;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+  `,
+  Value: styled.span`
+    cursor: pointer;
+
+    display: inline-block;
+    margin-inline-end: 24px;
+  `,
+  Icon: styled(Icon)`
+    display: inline-block;
   `
 };
 
@@ -30,9 +47,13 @@ const Select = ({ label, value, onChange, children }) => {
   const displayedValue = getDisplayedValue(value, children);
 
   return (
-    <S.Select value={value} onChange={onChange}>
-      {children}
-    </S.Select>
+    <S.Wrapper>
+      <S.Select value={value} onChange={onChange}>
+        {children}
+      </S.Select>
+      <S.Value>{displayedValue}</S.Value>
+      <S.Icon id='chevron-down' />
+    </S.Wrapper>
   );
 };
 
