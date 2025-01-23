@@ -59,11 +59,11 @@ const Select = ({ label, value, onChange, children }) => {
 
   return (
     <S.Wrapper>
+      <S.Icon id='chevron-down' />
       <S.Select value={value} onChange={onChange}>
         {children}
       </S.Select>
       {displayedValue}
-      <S.Icon id='chevron-down' />
     </S.Wrapper>
   );
 };
