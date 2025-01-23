@@ -29,6 +29,7 @@ const S = {
 
     &:focus-within {
       outline: 1px solid;
+      outline: 1px auto -webkit-focus-ring-color;
     }
   `,
   Select: styled.select`
