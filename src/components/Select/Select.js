@@ -8,14 +8,15 @@ import { getDisplayedValue } from './Select.helpers';
 const S = {
   Wrapper: styled.div`
     position: relative;
-    display: inline-block;
     cursor: pointer;
 
     background-color: ${COLORS.transparentGray15};
     border: none;
     border-radius: 8px;
     padding: 12px 16px;
+    padding-right: 52px;
     height: 43px;
+    width: max-content;
 
     color: ${COLORS.gray700};
     font-size: 1rem;
@@ -38,12 +39,11 @@ const S = {
     left: 0;
     width: 100%;
     height: 100%;
-  `,
-  Value: styled.span`
-    cursor: pointer;
 
-    margin-inline-end: 36px;
+    /* need to override height in Safari */
+    appearance: none;
   `,
+
   Icon: styled(Icon)`
     cursor: pointer;
 
@@ -61,7 +61,7 @@ const Select = ({ label, value, onChange, children }) => {
       <S.Select value={value} onChange={onChange}>
         {children}
       </S.Select>
-      <S.Value>{displayedValue}</S.Value>
+      {displayedValue}
       <S.Icon id='chevron-down' />
     </S.Wrapper>
   );
