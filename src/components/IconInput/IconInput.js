@@ -41,7 +41,8 @@ const SIZES = {
 };
 
 const S = {
-  Wrapper: styled.div`
+  Wrapper: styled.label`
+    display: block;
     position: relative;
     color: ${COLORS.gray700};
     width: ${({ $width }) => `${$width}px`};
@@ -57,7 +58,7 @@ const S = {
       outline-offset: 2px;
     }
   `,
-  Label: styled.label`
+  IconWrapper: styled.div`
     position: absolute;
     left: 0;
 
@@ -69,7 +70,7 @@ const S = {
     width: 100%;
     font-weight: 400;
     line-height: normal;
-    color: ${COLORS.gray700};
+    color: inherit;
     font-weight: 700;
     ${({ $size }) => SIZES[$size].input};
 
@@ -84,10 +85,6 @@ const S = {
       color: ${COLORS.gray500};
     }
 
-    &:hover {
-      color: ${COLORS.black};
-    }
-
     &:focus {
       color: ${COLORS.gray700};
       outline: none;
@@ -95,18 +92,18 @@ const S = {
   `
 };
 
-const IconInput = ({ label, icon, id, width = 250, size = 'small', ...props }) => {
+const IconInput = ({ label, icon, width = 250, size = 'small', ...props }) => {
   const hasIcon = Boolean(icon);
 
   return (
     <S.Wrapper $width={width} $size={size}>
       {hasIcon && (
-        <S.Label htmlFor={id} $size={size}>
+        <S.IconWrapper $size={size}>
           <Icon id={icon} size={SIZES[size].iconSize} />
-          <VisuallyHidden>{label}</VisuallyHidden>
-        </S.Label>
+        </S.IconWrapper>
       )}
-      <S.NativeInput id={id} $hasIcon={hasIcon} $size={size} {...props} />
+      <VisuallyHidden>{label}</VisuallyHidden>
+      <S.NativeInput $hasIcon={hasIcon} $size={size} {...props} />
     </S.Wrapper>
   );
 };
