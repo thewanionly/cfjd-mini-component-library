@@ -70,6 +70,7 @@ const S = {
     font-weight: 400;
     line-height: normal;
     color: ${COLORS.gray700};
+    font-weight: 700;
     ${({ $size }) => SIZES[$size].input};
 
     ${({ $hasIcon }) =>
@@ -79,6 +80,7 @@ const S = {
     `};
 
     &::placeholder {
+      font-weight: 400;
       color: ${COLORS.gray500};
     }
 
