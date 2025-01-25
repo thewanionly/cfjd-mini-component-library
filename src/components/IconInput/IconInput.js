@@ -93,7 +93,7 @@ const S = {
   `
 };
 
-const IconInput = ({ icon, id, width = 250, size = 'small', placeholder }) => {
+const IconInput = ({ label, icon, id, width = 250, size = 'small', placeholder }) => {
   const hasIcon = Boolean(icon);
 
   return (
@@ -101,6 +101,7 @@ const IconInput = ({ icon, id, width = 250, size = 'small', placeholder }) => {
       {hasIcon && (
         <S.Label htmlFor={id} $size={size}>
           <Icon id={icon} size={SIZES[size].iconSize} />
+          <VisuallyHidden>{label}</VisuallyHidden>
         </S.Label>
       )}
       <S.NativeInput id={id} placeholder={placeholder} $hasIcon={hasIcon} $size={size} />
