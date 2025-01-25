@@ -33,7 +33,7 @@ const S = {
     border: none;
     padding: 0;
     width: 100%;
-    padding-inline-start: 24px;
+    padding-inline-start: ${({ $hasIcon }) => $hasIcon && '24px'};
     color: ${COLORS.gray700};
 
     &::placeholder {
@@ -52,12 +52,16 @@ const S = {
 };
 
 const IconInput = ({ icon, id, width = 250, size, placeholder }) => {
+  const hasIcon = Boolean(icon);
+
   return (
     <S.Wrapper $width={width}>
-      <S.Label htmlFor={id}>
-        <Icon id={icon} size={16} />
-      </S.Label>
-      <S.NativeInput id={id} placeholder={placeholder} />
+      {hasIcon && (
+        <S.Label htmlFor={id}>
+          <Icon id={icon} size={16} />
+        </S.Label>
+      )}
+      <S.NativeInput id={id} placeholder={placeholder} $hasIcon={hasIcon} />
     </S.Wrapper>
   );
 };
